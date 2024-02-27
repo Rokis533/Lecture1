@@ -72,7 +72,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{4E47592A-BC50-
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityFrameworkProject", "EntityFrameworkProject\EntityFrameworkProject.csproj", "{BC9D2766-EFAA-42AB-A05A-878CB698AD73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MongoDbtest", "MongoDbtest\MongoDbtest.csproj", "{60D94D23-F7D3-458D-B1D8-A863B4126E46}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoDbtest", "MongoDbtest\MongoDbtest.csproj", "{60D94D23-F7D3-458D-B1D8-A863B4126E46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManyToMany", "ManyToMany\ManyToMany.csproj", "{8107F2DD-E613-4656-9DAF-72AAE6A38A4B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -204,6 +206,10 @@ Global
 		{60D94D23-F7D3-458D-B1D8-A863B4126E46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60D94D23-F7D3-458D-B1D8-A863B4126E46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60D94D23-F7D3-458D-B1D8-A863B4126E46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8107F2DD-E613-4656-9DAF-72AAE6A38A4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8107F2DD-E613-4656-9DAF-72AAE6A38A4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8107F2DD-E613-4656-9DAF-72AAE6A38A4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8107F2DD-E613-4656-9DAF-72AAE6A38A4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -240,6 +246,7 @@ Global
 		{84EDB282-C291-42BE-9DE4-1D1A6F9B686E} = {145D9214-2489-41A1-8A1E-00D3D0D0E668}
 		{BC9D2766-EFAA-42AB-A05A-878CB698AD73} = {4E47592A-BC50-4B45-8349-D79E1167E997}
 		{60D94D23-F7D3-458D-B1D8-A863B4126E46} = {4E47592A-BC50-4B45-8349-D79E1167E997}
+		{8107F2DD-E613-4656-9DAF-72AAE6A38A4B} = {4E47592A-BC50-4B45-8349-D79E1167E997}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FE572D26-728E-4B8B-A0A9-6D881BDD5B6F}
