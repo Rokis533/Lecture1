@@ -8,9 +8,12 @@ namespace ManyToMany
         static void Main(string[] args)
         {
             List<Course> courses = GetCourses();
+
             foreach (var course in courses)
             {
                 Console.WriteLine($"{course.Title}: ");
+
+
 
                 foreach (var student in course.CourseStudents)
                 {
@@ -25,7 +28,7 @@ namespace ManyToMany
         {
             using (var db = new CourseContext())
             {
-                var students = db.Students.Include(x => x.StudentCourses).ToList();
+                var students = db.Students.ToList();
                 return students;
             }
         }

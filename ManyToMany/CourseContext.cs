@@ -11,7 +11,9 @@ namespace ManyToMany
         public DbSet<Course> Courses { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseSqlServer(@"Server=(LocalDb)\MSSQLLocalDB;Database=CourseDatabase;Trusted_Connection=True");
+            => optionsBuilder
+            .UseLazyLoadingProxies()
+            .UseSqlServer(@"Server=(LocalDb)\MSSQLLocalDB;Database=CourseDatabase;Trusted_Connection=True");
 
     }
 }

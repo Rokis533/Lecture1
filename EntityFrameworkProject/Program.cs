@@ -37,8 +37,14 @@ namespace EntityFrameworkProject
 
 
 
-                    Book book2 = db.Books.Include(x => x.Pages).FirstOrDefault(x => x.Name == "100M Dollar Leads");
+                    Book book2 = db.Books.FirstOrDefault(x => x.Name == "100M Dollar Leads");
 
+                    Console.WriteLine(book2);
+
+                    foreach (var item in book2.Pages)
+                    {
+                        Console.WriteLine(item.Content);
+                    }
 
                     throw new Exception("Test");
                     transaction.Commit();

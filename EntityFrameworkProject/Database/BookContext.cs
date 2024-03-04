@@ -14,7 +14,9 @@ namespace EntityFrameworkProject.Database
         public DbSet<Book> Books { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseSqlServer(@"Server=(LocalDb)\MSSQLLocalDB;Database=BookDatabase;Trusted_Connection=True");
+            => optionsBuilder
+            .UseLazyLoadingProxies()
+            .UseSqlServer(@"Server=(LocalDb)\MSSQLLocalDB;Database=BookDatabase;Trusted_Connection=True");
 
     }
 }

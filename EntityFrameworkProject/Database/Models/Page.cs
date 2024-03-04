@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EntityFrameworkProject.Database.Models
 {
-    internal class Page
+    public class Page
     {
         [Key]
         public Guid Id { get; set; }

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ManyToMany.Models
 {
-    internal class Student
+    public class Student
     {
         public int StudentId { get; set; }
         public string Name { get; set; }
-        public List<Course> StudentCourses { get; set; }
+        public virtual List<Course> StudentCourses { get; set; }
     }
 }
