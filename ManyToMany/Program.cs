@@ -5,25 +5,79 @@ namespace ManyToMany
 {
     internal class Program
     {
+        private static readonly CourseContext db = new CourseContext();
+
         static void Main(string[] args)
         {
-            List<Course> courses = GetCourses();
 
-            foreach (var course in courses)
-            {
-                Console.WriteLine($"{course.Title}: ");
+            //Author author = db.Authors.FirstOrDefault(x => x.Name == "Rokas");
 
+            //Book book = db.Books.FirstOrDefault(x => x.Title == "Show");
 
+            //Author author1 = new Author() { Name = "Rokas" };
 
-                foreach (var student in course.CourseStudents)
-                {
-                    Console.WriteLine($"    {student.Name}: ");
-                }
-                Console.WriteLine($"-----------------------------");
-            }
+            //book.Authors.Add(author);
+            //db.SaveChanges();
+            //book.Authors.Add(author1);
+
+            //db.SaveChanges();
+
+            Author author1 = new Author() { Name = "Rokas" };
+            Author author2 = new Author() { Name = "John" };
+            Author author3 = new Author() { Name = "Rick" };
+            Author author4 = new Author() { Name = "Morty" };
+
+            Book book1 = new Book() { Title = "Show", Authors = new List<Author> { author3, author4 } };
+            Book book2 = new Book() { Title = "Simpsons", Authors = new List<Author> { author1, author4, author3 } };
+            Book book3 = new Book() { Title = "C# for dummies", Authors = new List<Author> { author2, author4 } };
+            Book book4 = new Book() { Title = "Facebook", Authors = new List<Author> { author1 } };
+
+            //db.Books.Add(book1);
+            //db.SaveChanges();
+            //db.Books.Add(book2);
+            //db.SaveChanges();
+            //db.Books.Add(book3);
+            //db.SaveChanges();
+            //db.Books.Add(book4);
+            //db.SaveChanges();
+
+            AddBook(book1);
+            AddBook(book2);
+            AddBook(book3);
+            AddBook(book4);
+
 
 
         }
+
+
+        public static void AddBook(Book book)
+        {
+            using (var db = new CourseContext())
+            {
+
+                //for (int i = 0; i < book.Authors.Count(); i++)
+                //{
+                //    Author author = db.Authors.FirstOrDefault(x => x.Name == book.Authors[i].Name);
+                //    if (author is not null)
+                //    {
+                //        book.Authors[i] = author;
+                //    }
+                //}
+
+                foreach (var item in book.Authors)
+                {
+                    if (item.Id == Guid.Empty)
+                    {
+                        db.Authors.Attach(item);//this is already in database
+                        db.Authors.Add(item);
+                    }
+                }
+                var students = db.Books.Add(book);
+                db.SaveChanges();
+            }
+        }
+
         public static List<Student> GetStudents()
         {
             using (var db = new CourseContext())

@@ -10,6 +10,7 @@ namespace ManyToMany.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+
             migrationBuilder.CreateTable(
                 name: "Courses",
                 columns: table => new
@@ -69,6 +70,7 @@ namespace ManyToMany.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+
             migrationBuilder.DropTable(
                 name: "CourseStudent");
 
