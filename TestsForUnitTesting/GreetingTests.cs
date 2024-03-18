@@ -1,6 +1,4 @@
-﻿
-
-using TestableProject;
+﻿using TestableProject;
 
 namespace TestsForUnitTesting
 {
