@@ -10,8 +10,6 @@ namespace IntegrationTestableProject
 {
     public class BookStoreContext : DbContext
     {
-        private DbContextOptionsBuilder<BookStoreContext> options;
-
         public BookStoreContext()
         {
         }
@@ -20,7 +18,7 @@ namespace IntegrationTestableProject
         {
         }
 
-        public DbSet<Book> Books { get; set; }
+        public virtual DbSet<Book> Books { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

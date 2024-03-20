@@ -24,6 +24,7 @@ namespace IntegrationTests
                 .UseInMemoryDatabase(databaseName: "TestDB")
                 .Options;
 
+
             _context = new BookStoreContext(options);
             _bookRepository = new BookRepository(_context);
 
