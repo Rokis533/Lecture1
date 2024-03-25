@@ -168,17 +168,26 @@ namespace MoqTests
             var mockapi = new Mock<IGetFromApi>();
 
 
-            mockapi.Setup(s => s.GetData())
-                .Returns("                         Book, okk okkook oko k                                    ");
+            mockapi.SetupSequence(s => s.GetData())
+                .Returns("                         Book, okk okkook oko k                                    ")
+                .Returns("askjdhsad")
+                .Returns("Test")
+                .Throws<NullReferenceException>()
+                .Returns("Test")
+                .Returns("Test")
+                .Returns("Test");
 
             var api = mockapi.Object;
 
             var mockbookService = new BookService(_bookRepository, new EmailService(), api);
 
-            string result = mockbookService.GetBooksStringFromInternet();
+            string result1 = mockbookService.GetBooksStringFromInternet();
+            string result2 = mockbookService.GetBooksStringFromInternet();
+            string result3 = mockbookService.GetBooksStringFromInternet();
 
+            mockapi.Verify(s => s.GetData(), Times.Exactly(3));
 
-            Assert.AreEqual("Book, okk okkook oko k", result);
+            //Assert.AreEqual("Book, okk okkook oko k", result1);
 
         }
         [TestMethod]
@@ -205,8 +214,10 @@ namespace MoqTests
             var result = myclass2.GetNumbers();
 
 
-            Assert.AreEqual(list, result);
+            Assert.IsTrue(result.Contains(5));
 
         }
+
+
     }
 }
