@@ -1,7 +1,7 @@
 
-using Microsoft.OpenApi.Models;
+using DependencyInjection.Services;
 
-namespace WebApiProjectNew
+namespace DependencyInjection
 {
     public class Program
     {
@@ -11,17 +11,18 @@ namespace WebApiProjectNew
 
             // Add services to the container.
 
-            builder.Services.AddControllers().AddXmlSerializerFormatters();
+            builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddSwaggerGen(
-                    c => c.MapType<DateOnly>(() => new OpenApiSchema
-                    {
-                        Type = "string",
-                        Format = "date"
-                    })
-                );
+
+            //Registering services
+            builder.Services.AddScoped<IMyScopedService, MyScopedService>();
+            builder.Services.AddScoped<ITestService, TestService>();
+
+            builder.Services.AddSingleton<IMySingletonService, MySingletonService>();
+
+
 
             var app = builder.Build();
 

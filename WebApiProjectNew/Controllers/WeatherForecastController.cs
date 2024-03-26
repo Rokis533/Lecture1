@@ -4,7 +4,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace WebApiProjectNew.Controllers
 {
     [ApiController]
-    [Route("[controller]/[action]")]
+    [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -32,9 +32,9 @@ namespace WebApiProjectNew.Controllers
             })
             .ToArray();
         }
-        [HttpGet]
-        [ActionName("GetListNew")]
-        [Route("/GetMyWeather/[action]")]
+        // GET localhost/WeatherForecast/GetWeatherForecastList
+
+        [HttpGet("GetWeatherForecastList")]
         public List<WeatherForecast> GetList()
         {
             return _forecasts;
@@ -44,15 +44,30 @@ namespace WebApiProjectNew.Controllers
         {
             _forecasts.Add(weatherForecast);
         }
-        [HttpGet]
-        public ActionResult<List<WeatherForecast>> GetBydate(DateOnly? dateOnly)
+
+        // GET localhost/WeatherForecast/{dateOnly}
+        // GET localhost/WeatherForecast/2024-03-26
+        // GET localhost/Student/264
+
+        [HttpGet("{id}")]
+        public ActionResult<List<WeatherForecast>> GetById(int id)
         {
-            if(dateOnly == null)
+            return Ok();
+        }
+        [HttpGet("GetBy")]
+        public ActionResult<List<WeatherForecast>> GetBydate2(DateOnly? dateOnly, string message, int number)
+        {
+            if (dateOnly == null)
             {
                 throw new ArgumentNullException(nameof(dateOnly));
             }
-            
+
             return Ok(_forecasts.Where(x => x.Date == dateOnly).ToList());
         }
+        //[HttpPost("SendFile")]
+        //public ActionResult<IFormFile> Send(List<IFormFile> file)
+        //{
+        //    return Ok(file);
+        //}
     }
 }
