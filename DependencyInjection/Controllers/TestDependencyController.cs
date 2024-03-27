@@ -40,11 +40,6 @@ namespace DependencyInjection.Controllers
                 {
                     Scoped = _scopedService.GetGuid(),
                     Singleton = _singletonService.GetGuid()
-                },
-                RunTwo = new Run()
-                {
-                    Scoped = _scopedService.GetGuid(),
-                    Singleton = _singletonService.GetGuid()
                 }
             };
 

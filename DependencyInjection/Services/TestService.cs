@@ -8,15 +8,15 @@
 
     public class TestService : ITestService
     {
-        private readonly Lazy<IMyScopedService> _myScopedService;
-        public TestService(Lazy<IMyScopedService> myScopedService)
+        private readonly IMyScopedService _myScopedService;
+        public TestService(IMyScopedService myScopedService)
         {
             _myScopedService = myScopedService;
         }
 
         public Guid GetGuidFromMyService()
         {
-            return _myScopedService.Value.GetGuid();
+            return _myScopedService.GetGuid();
         }
 
 
