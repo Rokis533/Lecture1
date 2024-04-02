@@ -2,17 +2,17 @@
 
 namespace DependencyInjection.Services
 {
-    public interface ITestService 
+    public interface ITestService2
     {
         public Run GetRun();
     }
 
-    public class TestService : ITestService
+    public class TestService2 : ITestService2
     {
         private readonly IMyScopedService _scopedService;
         private readonly IMySingletonService _singletonService;
         private readonly IMyTransientService _transientService;
-        public TestService(IMyScopedService myScopedService, IMySingletonService mySingletonService, IMyTransientService transientService)
+        public TestService2(IMyScopedService myScopedService, IMySingletonService mySingletonService, IMyTransientService transientService)
         {
             _scopedService = myScopedService;
             _singletonService = mySingletonService;

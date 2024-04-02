@@ -17,10 +17,17 @@ namespace DependencyInjection
             builder.Services.AddSwaggerGen();
 
             //Registering services
+            builder.Services.AddTransient<IMyTransientService, MyTransientService>();
+
             builder.Services.AddScoped<IMyScopedService, MyScopedService>();
-            builder.Services.AddScoped<ITestService, TestService>();
 
             builder.Services.AddSingleton<IMySingletonService, MySingletonService>();
+
+
+
+
+            builder.Services.AddScoped<ITestService, TestService>();
+            builder.Services.AddScoped<ITestService2, TestService2>();
 
 
 

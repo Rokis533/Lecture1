@@ -40,7 +40,7 @@ namespace WebApiProjectNew.Controllers
             return _forecasts;
         }
         [HttpPost]
-        public void Create(WeatherForecast weatherForecast)
+        public void Create([FromBody] WeatherForecast weatherForecast)
         {
             _forecasts.Add(weatherForecast);
         }
@@ -50,12 +50,12 @@ namespace WebApiProjectNew.Controllers
         // GET localhost/Student/264
 
         [HttpGet("{id}")]
-        public ActionResult<List<WeatherForecast>> GetById(int id)
+        public ActionResult<List<WeatherForecast>> GetById([FromRoute] int id)
         {
             return Ok();
         }
         [HttpGet("GetBy")]
-        public ActionResult<List<WeatherForecast>> GetBydate2(DateOnly? dateOnly, string message, int number)
+        public ActionResult<List<WeatherForecast>> GetBydate2([FromQuery] DateOnly? dateOnly, [FromQuery] string message, [FromQuery] int number)
         {
             if (dateOnly == null)
             {

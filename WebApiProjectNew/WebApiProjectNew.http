@@ -1,6 +1,17 @@
-@WebApiProjectNew_HostAddress = http://localhost:5248
+@WebApiProjectNew_HostAddress = https://localhost:7140
 
 GET {{WebApiProjectNew_HostAddress}}/weatherforecast/
 Accept: application/json
+
+###
+
+POST {{WebApiProjectNew_HostAddress}}/weatherforecast
+Content-Type: application/json
+
+{
+    Date = "2021-10-10",
+    TemperatureC = 10,
+    Summary ="Test"
+}
 
 ###

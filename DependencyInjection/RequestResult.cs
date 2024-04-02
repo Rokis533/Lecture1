@@ -2,6 +2,7 @@
 {
     public class Run
     {
+        public Guid Transient { get; set; }
         public Guid Scoped { get; set; }
         public Guid Singleton { get; set; }
     }
