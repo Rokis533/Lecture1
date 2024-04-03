@@ -29,7 +29,6 @@ namespace WebApiProjectNew.Controllers
         public void Post([FromBody] ProductDto value)
         {
             // Explanation of products.OrderBy(x => x.Id).LastOrDefault()?.Id ?? 0
-
             //
             //int newId = 0;
             //Product product1 = products.OrderBy(x => x.Id).LastOrDefault();

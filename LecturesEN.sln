@@ -100,7 +100,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{0A6BE8BE-9A8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiProjectNew", "WebApiProjectNew\WebApiProjectNew.csproj", "{7740F812-A6B1-403C-898B-DD16B6FD77E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyInjection", "DependencyInjection\DependencyInjection.csproj", "{544CF68A-8A21-4B2D-B0C2-8284B7F980EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DependencyInjection", "DependencyInjection\DependencyInjection.csproj", "{544CF68A-8A21-4B2D-B0C2-8284B7F980EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiWithDatabase", "ApiWithDatabase\ApiWithDatabase.csproj", "{618B1477-F67F-4747-8698-1C1ADBDC5DAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -272,6 +274,10 @@ Global
 		{544CF68A-8A21-4B2D-B0C2-8284B7F980EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{544CF68A-8A21-4B2D-B0C2-8284B7F980EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{544CF68A-8A21-4B2D-B0C2-8284B7F980EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{618B1477-F67F-4747-8698-1C1ADBDC5DAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{618B1477-F67F-4747-8698-1C1ADBDC5DAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{618B1477-F67F-4747-8698-1C1ADBDC5DAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{618B1477-F67F-4747-8698-1C1ADBDC5DAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -320,6 +326,7 @@ Global
 		{F2D28B94-E743-4D14-8B26-EA29746C173E} = {8DFBA69A-191F-4C9F-90F5-64334A25BDB8}
 		{7740F812-A6B1-403C-898B-DD16B6FD77E6} = {0A6BE8BE-9A8A-4E6C-8DB2-D966C84CE5D6}
 		{544CF68A-8A21-4B2D-B0C2-8284B7F980EE} = {0A6BE8BE-9A8A-4E6C-8DB2-D966C84CE5D6}
+		{618B1477-F67F-4747-8698-1C1ADBDC5DAD} = {0A6BE8BE-9A8A-4E6C-8DB2-D966C84CE5D6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FE572D26-728E-4B8B-A0A9-6D881BDD5B6F}
