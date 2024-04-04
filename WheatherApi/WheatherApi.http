@@ -1,0 +1,6 @@
+@WheatherApi_HostAddress = http://localhost:5170
+
+GET {{WheatherApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
