@@ -42,5 +42,46 @@ namespace WheatherApi.Controllers
             };
             return weatherForecast;
         }
+        [HttpGet("GetFromApiRecipes")]
+        public async Task<string> Get2(string meal)
+        {
+            var client = new HttpClient();
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri($"https://www.themealdb.com/api/json/v1/1/search.php?s={meal}")
+            };
+            var response = await client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            var body = await response.Content.ReadAsStringAsync();
+
+            var myDeserializedClass = JsonConvert.DeserializeObject(body);
+
+
+            return JsonConvert.SerializeObject(myDeserializedClass, Formatting.Indented);
+        }
+        [HttpGet("GetFromApiCars")]
+        public async Task<string> Get3()
+        {
+            var client = new HttpClient();
+
+            var requestBody = new StringContent(JsonConvert.SerializeObject(new WeatherForecast()));
+
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Post,
+                RequestUri = new Uri($"https://carapi.app/api/models"),
+                Content = requestBody,
+            };
+            var response = await client.SendAsync(request);
+
+            response.EnsureSuccessStatusCode();
+            var body = await response.Content.ReadAsStringAsync();
+
+            var myDeserializedClass = JsonConvert.DeserializeObject(body);
+
+
+            return JsonConvert.SerializeObject(myDeserializedClass, Formatting.Indented);
+        }
     }
 }
