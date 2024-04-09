@@ -5,8 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using EntityFrameworkProject.Database;
-using EntityFrameworkProject.Database.Models;
 
 namespace ApiWithDatabase.Controllers
 {
@@ -14,25 +12,25 @@ namespace ApiWithDatabase.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
-        private readonly BookContext _context;
+        private readonly IBookRepository _bookRepository;
 
-        public BooksController(BookContext context)
+        public BooksController(IBookRepository bookRepository)
         {
-            _context = context;
+            _bookRepository = bookRepository;
         }
 
         // GET: api/Books
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Book>>> GetBooks()
         {
-            return await _context.Books.ToListAsync();
+            return Ok(_bookRepository.GetBooks());
         }
 
         // GET: api/Books/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Book>> GetBook(Guid id)
         {
-            var book = await _context.Books.FindAsync(id);
+            var book = _bookRepository.Get(id);
 
             if (book == null)
             {
@@ -52,15 +50,13 @@ namespace ApiWithDatabase.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(book).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                _bookRepository.Update(book);
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!BookExists(id))
+                if (!_bookRepository.BookExists(id))
                 {
                     return NotFound();
                 }
@@ -78,9 +74,8 @@ namespace ApiWithDatabase.Controllers
         [HttpPost]
         public async Task<ActionResult<Book>> PostBook(Book book)
         {
-            _context.Books.Add(book);
-            await _context.SaveChangesAsync();
 
+            book = _bookRepository.Add(book);
             return CreatedAtAction("GetBook", new { id = book.Id }, book);
         }
 
@@ -88,21 +83,16 @@ namespace ApiWithDatabase.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBook(Guid id)
         {
-            var book = await _context.Books.FindAsync(id);
-            if (book == null)
+            if (!_bookRepository.BookExists(id))
             {
                 return NotFound();
             }
 
-            _context.Books.Remove(book);
-            await _context.SaveChangesAsync();
+            _bookRepository.Delete(id);
 
             return NoContent();
         }
 
-        private bool BookExists(Guid id)
-        {
-            return _context.Books.Any(e => e.Id == id);
-        }
+
     }
 }

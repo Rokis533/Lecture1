@@ -1,6 +1,5 @@
 
 using ApiWithDatabase.Controllers;
-using EntityFrameworkProject.Database;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 

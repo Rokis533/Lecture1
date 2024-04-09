@@ -1,12 +1,11 @@
-﻿using EntityFrameworkProject.Database.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EntityFrameworkProject.Database
+namespace ApiWithDatabase
 {
     public class BookContext : DbContext
     {

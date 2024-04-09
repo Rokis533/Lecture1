@@ -104,7 +104,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DependencyInjection", "Depe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiWithDatabase", "ApiWithDatabase\ApiWithDatabase.csproj", "{618B1477-F67F-4747-8698-1C1ADBDC5DAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WheatherApi", "WheatherApi\WheatherApi.csproj", "{104872C9-E40F-47C2-B5DE-DC2FE72198F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WheatherApi", "WheatherApi\WheatherApi.csproj", "{104872C9-E40F-47C2-B5DE-DC2FE72198F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTest", "ApiTest\ApiTest.csproj", "{4288AFAA-10B4-45BB-810E-5D5D303CFAF4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -284,6 +286,10 @@ Global
 		{104872C9-E40F-47C2-B5DE-DC2FE72198F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{104872C9-E40F-47C2-B5DE-DC2FE72198F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{104872C9-E40F-47C2-B5DE-DC2FE72198F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4288AFAA-10B4-45BB-810E-5D5D303CFAF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4288AFAA-10B4-45BB-810E-5D5D303CFAF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4288AFAA-10B4-45BB-810E-5D5D303CFAF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4288AFAA-10B4-45BB-810E-5D5D303CFAF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -334,6 +340,7 @@ Global
 		{544CF68A-8A21-4B2D-B0C2-8284B7F980EE} = {0A6BE8BE-9A8A-4E6C-8DB2-D966C84CE5D6}
 		{618B1477-F67F-4747-8698-1C1ADBDC5DAD} = {0A6BE8BE-9A8A-4E6C-8DB2-D966C84CE5D6}
 		{104872C9-E40F-47C2-B5DE-DC2FE72198F4} = {0A6BE8BE-9A8A-4E6C-8DB2-D966C84CE5D6}
+		{4288AFAA-10B4-45BB-810E-5D5D303CFAF4} = {0A6BE8BE-9A8A-4E6C-8DB2-D966C84CE5D6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FE572D26-728E-4B8B-A0A9-6D881BDD5B6F}
