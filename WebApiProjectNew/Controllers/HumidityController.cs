@@ -9,9 +9,16 @@ namespace WebApiProjectNew.Controllers
     {
         [HttpGet]
         [Route("/GetMyHumidity")]
-        public int Get()
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), 400)]
+        public ActionResult<int> Get(int numb)
         {
-            return 0;
+            if (numb <= 0)
+            {
+                return BadRequest("Number is below 0");
+            }
+            //return StatusCode(524, "I don't know what happened");
+            return Ok(numb);
         }
     }
 }
