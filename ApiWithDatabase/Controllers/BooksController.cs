@@ -17,7 +17,6 @@ namespace ApiWithDatabase.Controllers
 
         public BooksController(IBookRepository bookRepository, ILogger<WeatherForecastController> logger)
         {
-            this.bookRepository = bookRepository;
             this.logger = logger;
         }
 
