@@ -8,93 +8,100 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ApiWithDatabase.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class BooksController : ControllerBase
-    {
-        private readonly IBookRepository _bookRepository;
-        private readonly ILogger<WeatherForecastController> logger;
+    //    [Route("api/[controller]")]
+    //    [ApiController]
+    //    public class BooksController : ControllerBase
+    //    {
+    //        private readonly IBookRepository _bookRepository;
 
-        public BooksController(IBookRepository bookRepository, ILogger<WeatherForecastController> logger)
-        {
-            this.logger = logger;
-        }
-
-
-        // GET: api/Books
-        [HttpGet]
-        public ActionResult<IEnumerable<Book>> GetBooks()
-        {
-            return Ok(_bookRepository.GetBooks());
-        }
-
-        // GET: api/Books/5
-        [HttpGet("{id}")]
-        public ActionResult<Book> GetBook(Guid id)
-        {
-            var book = _bookRepository.Get(id, null, null, DateTime.Now);
-
-            if (book == null)
-            {
-                return NotFound();
-            }
-
-            return book;
-        }
-
-        // PUT: api/Books/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public IActionResult PutBook(Guid id, Book book)
-        {
-            if (id != book.Id)
-            {
-                return BadRequest();
-            }
-
-            try
-            {
-                _bookRepository.Update(book);
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!_bookRepository.BookExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Books
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public ActionResult<Book> PostBook(Book book)
-        {
-
-            book = _bookRepository.Add(book);
-            return CreatedAtAction("GetBook", new { id = book.Id }, book);
-        }
-
-        // DELETE: api/Books/5
-        [HttpDelete("{id}")]
-        public IActionResult DeleteBook(Guid id)
-        {
-            if (!_bookRepository.BookExists(id))
-            {
-                return NotFound();
-            }
-
-            _bookRepository.Delete(id);
-
-            return NoContent();
-        }
+    //        public BooksController(IBookRepository bookRepository)
+    //        {
+    //            _bookRepository = bookRepository;
+    //        }
 
 
-    }
+    //        // GET: api/Books
+    //        [HttpGet]
+    //        public ActionResult<IEnumerable<Book>> GetBooks()
+    //        {
+    //            return await _context.Books.ToListAsync();
+    //        }
+
+    //        // GET: api/Books/5
+    //        [HttpGet("{id}")]
+    //        public ActionResult<Book> GetBook(Guid id)
+    //        {
+    //            var book = _bookRepository.Get(id);
+
+    //            if (book == null)
+    //            {
+    //                return NotFound();
+    //            }
+
+    //            return book;
+    //        }
+
+    //        // PUT: api/Books/5
+    //        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    //        [HttpPut("{id}")]
+    //        public IActionResult PutBook(Guid id, Book book)
+    //        {
+    //            if (id != book.Id)
+    //            {
+    //                return BadRequest();
+    //            }
+
+    //            _context.Entry(book).State = EntityState.Modified;
+
+    //            try
+    //            {
+    //                await _context.SaveChangesAsync();
+    //            }
+    //            catch (DbUpdateConcurrencyException)
+    //            {
+    //                if (!BookExists(id))
+    //                {
+    //                    return NotFound();
+    //                }
+    //                else
+    //                {
+    //                    throw;
+    //                }
+    //            }
+
+    //            return NoContent();
+    //        }
+
+    //        // POST: api/Books
+    //        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+    //        [HttpPost]
+    //        public ActionResult<Book> PostBook(Book book)
+    //        {
+    //            _context.Books.Add(book);
+    //            await _context.SaveChangesAsync();
+
+    //            return CreatedAtAction("GetBook", new { id = book.Id }, book);
+    //        }
+
+    //        // DELETE: api/Books/5
+    //        [HttpDelete("{id}")]
+    //        public IActionResult DeleteBook(Guid id)
+    //        {
+    //            var book = await _context.Books.FindAsync(id);
+    //            if (book == null)
+    //            {
+    //                return NotFound();
+    //            }
+
+    //            _context.Books.Remove(book);
+    //            await _context.SaveChangesAsync();
+
+    //            return NoContent();
+    //        }
+
+    //        private bool BookExists(Guid id)
+    //        {
+    //            return _context.Books.Any(e => e.Id == id);
+    //        }
+    //    }
 }
