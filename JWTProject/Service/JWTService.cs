@@ -12,11 +12,12 @@ namespace JWTProject.Service
         {
             _configuration = configuration;
         }
-        public string GetJWT(string user)
+        public string GetJWT(string user, string role)
         {
             List<Claim> claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, user)
+                new Claim(ClaimTypes.Name, user),
+                new Claim(ClaimTypes.Role, role)
             };
             var secretToken = _configuration.GetSection("Jwt:Key").Value;
             var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(secretToken));
@@ -27,7 +28,7 @@ namespace JWTProject.Service
                 issuer: _configuration.GetSection("Jwt:Issuer").Value,
                 audience: _configuration.GetSection("Jwt:Audience").Value,
                 claims: claims,
-                expires: DateTime.Now.AddSeconds(30),
+                expires: DateTime.Now.AddDays(10),
                 signingCredentials: cred);
 
 

@@ -2,6 +2,6 @@
 {
     public interface IJWTService
     {
-        string GetJWT(string user);
+        string GetJWT(string user, string role);
     }
 }
