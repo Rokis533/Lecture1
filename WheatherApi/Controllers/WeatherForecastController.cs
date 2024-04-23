@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Globalization;
+using System.Net.Http.Headers;
 
 namespace WheatherApi.Controllers
 {
@@ -19,28 +20,29 @@ namespace WheatherApi.Controllers
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public async Task<WeatherForecast> Get()
+        public async Task<string> Get()
         {
-            string apiKey = _configuration.GetValue<string>("ApiKey");
+            string apiKey = "askljdhuiasjkdfjklahuidasghuoydgyuoasguidhasuijkdnasndaskd";
             var client = new HttpClient();
+            client.DefaultRequestHeaders.Add("ApiKey", apiKey);
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri($"https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/Kaunas/today?unitGroup=metric&key={apiKey}&contentType=json")
+                RequestUri = new Uri($"https://localhost:7246/WeatherForecast")
             };
             var response = await client.SendAsync(request);
             response.EnsureSuccessStatusCode();
             var body = await response.Content.ReadAsStringAsync();
 
-            WeatherDto myDeserializedClass = JsonConvert.DeserializeObject<WeatherDto>(body);
+            //WeatherDto myDeserializedClass = JsonConvert.DeserializeObject<WeatherDto>(body);
 
-            WeatherForecast weatherForecast = new WeatherForecast
-            {
-                TemperatureC = (int)myDeserializedClass.Days[0].Temp,
-                Date = DateOnly.ParseExact(myDeserializedClass.Days[0].Datetime, "yyyy-MM-dd", CultureInfo.InvariantCulture),
-                Summary = myDeserializedClass.Description
-            };
-            return weatherForecast;
+            //WeatherForecast weatherForecast = new WeatherForecast
+            //{
+            //    TemperatureC = (int)myDeserializedClass.Days[0].Temp,
+            //    Date = DateOnly.ParseExact(myDeserializedClass.Days[0].Datetime, "yyyy-MM-dd", CultureInfo.InvariantCulture),
+            //    Summary = myDeserializedClass.Description
+            //};
+            return body;
         }
         [HttpGet("GetFromApiRecipes")]
         public async Task<string> Get2(string meal)
