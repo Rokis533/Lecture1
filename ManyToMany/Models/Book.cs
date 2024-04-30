@@ -8,11 +8,9 @@ using System.Threading.Tasks;
 
 namespace ManyToMany.Models
 {
-    public class Book
+    public class Book : BaseModel
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Id { get; set; }
+
         [Required]
         [StringLength(50)]
         public string Title { get; set; }

@@ -1,4 +1,5 @@
 
+using JWTProject.Helper;
 using JWTProject.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -82,6 +83,18 @@ namespace JWTProject
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
+            }
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetService<UserContext>();
+                if (!db.Users.Any(x => x.Username == "Admin2"))
+                {
+                    var user = UserHelper.CreateUser("Admin2", "Admin2");
+                    user.Role = "Admin";
+                    db.Users.Add(user);
+                    db.SaveChanges();
+                }
             }
 
             app.UseHttpsRedirection();
