@@ -37,7 +37,7 @@ namespace ManyToMany.Migrations
 
                     b.HasIndex("BooksId");
 
-                    b.ToTable("AuthorBook");
+                    b.ToTable("AuthorBook", (string)null);
                 });
 
             modelBuilder.Entity("CourseStudent", b =>
@@ -52,7 +52,7 @@ namespace ManyToMany.Migrations
 
                     b.HasIndex("StudentCoursesCourseId");
 
-                    b.ToTable("CourseStudent");
+                    b.ToTable("CourseStudent", (string)null);
                 });
 
             modelBuilder.Entity("ManyToMany.Models.Author", b =>
@@ -82,7 +82,7 @@ namespace ManyToMany.Migrations
 
                     b.HasIndex("Name");
 
-                    b.ToTable("Authors");
+                    b.ToTable("Authors", (string)null);
                 });
 
             modelBuilder.Entity("ManyToMany.Models.Book", b =>
@@ -110,7 +110,7 @@ namespace ManyToMany.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Books");
+                    b.ToTable("Books", (string)null);
                 });
 
             modelBuilder.Entity("ManyToMany.Models.Course", b =>
@@ -127,7 +127,7 @@ namespace ManyToMany.Migrations
 
                     b.HasKey("CourseId");
 
-                    b.ToTable("Courses");
+                    b.ToTable("Courses", (string)null);
                 });
 
             modelBuilder.Entity("ManyToMany.Models.Student", b =>
@@ -144,7 +144,7 @@ namespace ManyToMany.Migrations
 
                     b.HasKey("StudentId");
 
-                    b.ToTable("Students");
+                    b.ToTable("Students", (string)null);
                 });
 
             modelBuilder.Entity("AuthorBook", b =>
