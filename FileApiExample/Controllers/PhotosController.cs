@@ -17,9 +17,9 @@ namespace FileApiExample.Controllers
         {
             _context = context;
         }
-        // saving to database
-        //[HttpPost]
-        //public IActionResult Add(IFormFile photo)
+        //saving to database
+        //[HttpPost("Add")]
+        //public IActionResult Add([FromForm] IFormFile photo, [FromQuery] string str)
         //{
         //    try
         //    {
@@ -42,36 +42,40 @@ namespace FileApiExample.Controllers
         //        return BadRequest(ex.Message);
         //    }
         //}
-
-
-        // saving to folder 
         [HttpPost]
-        public IActionResult Add(IFormFile photo)
+        public IActionResult Add([FromForm] Profile profile)
         {
-            try
-            {
-                string filePath = $"Photos/{photo.Name}_{DateTime.Now.ToString("yyyy_MM_dd_H_m_s")}{Path.GetExtension(photo.FileName)}";
-                using (FileStream file = new FileStream(filePath, FileMode.Create))
-                {
-                    photo.CopyTo(file);
 
-                }
-
-                _context.Photos.Add(new Photo
-                {
-                    ContentType = photo.ContentType,
-                    Name = photo.Name,
-                    FilePath = filePath
-                });
-                _context.SaveChanges();
-
-                return Ok(photo);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            return Ok(profile);
         }
+        // saving to folder 
+        //[HttpPost]
+        //public IActionResult Add(IFormFile photo)
+        //{
+        //    try
+        //    {
+        //        string filePath = $"Photos/{photo.Name}_{DateTime.Now.ToString("yyyy_MM_dd_H_m_s")}{Path.GetExtension(photo.FileName)}";
+        //        using (FileStream file = new FileStream(filePath, FileMode.Create))
+        //        {
+        //            photo.CopyTo(file);
+
+        //        }
+
+        //        _context.Photos.Add(new Photo
+        //        {
+        //            ContentType = photo.ContentType,
+        //            Name = photo.Name,
+        //            FilePath = filePath
+        //        });
+        //        _context.SaveChanges();
+
+        //        return Ok(photo);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return BadRequest(ex.Message);
+        //    }
+        //}
 
 
         // saving to database
@@ -94,22 +98,22 @@ namespace FileApiExample.Controllers
 
 
         // saving to folder 
-        [HttpGet]
-        public IActionResult Get(int id)
-        {
-            var photo = _context.Photos.FirstOrDefault(x => x.Id == id);
-            if (photo is null)
-            {
-                return NotFound();
-            }
-            var fileOnDisk = new FileInfo(photo.FilePath);
-            if (!fileOnDisk.Exists)
-            {
-                return NotFound("File not found on disk.");
-            }
-            var fileStream = new FileStream(photo.FilePath, FileMode.Open, FileAccess.Read);
-            return File(fileStream, photo.ContentType, "fromapi_" + photo.Name);
-        }
+        //[HttpGet]
+        //public IActionResult Get(int id)
+        //{
+        //    var photo = _context.Photos.FirstOrDefault(x => x.Id == id);
+        //    if (photo is null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    var fileOnDisk = new FileInfo(photo.FilePath);
+        //    if (!fileOnDisk.Exists)
+        //    {
+        //        return NotFound("File not found on disk.");
+        //    }
+        //    var fileStream = new FileStream(photo.FilePath, FileMode.Open, FileAccess.Read);
+        //    return File(fileStream, photo.ContentType, "fromapi_" + photo.Name);
+        //}
 
     }
 }

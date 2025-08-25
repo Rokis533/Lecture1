@@ -5,7 +5,7 @@
 namespace FileApiExample.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,7 +18,7 @@ namespace FileApiExample.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ContentType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FilePath = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    ImageData = table.Column<byte[]>(type: "varbinary(max)", nullable: false)
                 },
                 constraints: table =>
                 {

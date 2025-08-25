@@ -33,9 +33,9 @@ namespace FileApiExample.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FilePath")
+                    b.Property<byte[]>("ImageData")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()

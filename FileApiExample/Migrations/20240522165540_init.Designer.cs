@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FileApiExample.Migrations
 {
     [DbContext(typeof(FileContext))]
-    [Migration("20240507170243_Initial")]
-    partial class Initial
+    [Migration("20240522165540_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,9 +36,9 @@ namespace FileApiExample.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FilePath")
+                    b.Property<byte[]>("ImageData")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
